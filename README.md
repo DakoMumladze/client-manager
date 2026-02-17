@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Client Manager
+
+A full-stack client management system built with Next.js, React, TypeScript, and Tailwind CSS. Manage clients, projects, and tasks with a clean SaaS-style interface.
+
+## Features
+
+### Authentication
+- Sign up, login, and logout
+- Forgot password flow
+- Protected routes — dashboard requires authentication
+
+### User Profile
+- View and update profile (name, avatar)
+- Change password
+- File upload for avatar
+
+### Clients Management (CRUD)
+- Create, edit, delete, and view client details
+- Search and filter by name or status
+- Client status: **Lead** | **Active** | **Archived**
+- Notes field per client
+
+### Projects Management
+- Each client can have multiple projects (one-to-many)
+- Create, edit, and delete projects
+- Project status: **In Progress** | **Completed** | **On Hold**
+- Deadline date and budget tracking
+- Project description
+
+### Tasks Management
+- Tasks linked to a project (nested relations)
+- Title, description, priority (**Low** | **Medium** | **High**), and due date
+- Completed checkbox
+- Sort by priority or due date
+
+### Dashboard
+- Total clients, active projects, tasks due today
+- Completed tasks percentage
+- Charts (bar/pie) for data visualization
+
+### UI/UX
+- Sidebar navigation
+- Responsive layout
+- Toast notifications
+- Loading states and error handling
+- Confirmation modals for destructive actions
+
+## Planned Add-Ons
+- File uploads for clients/projects
+- Activity log
+- Dark/light mode toggle
+- Team members and roles
+- Stripe test subscription
+- Email notifications
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Linting:** ESLint
+- **Package Manager:** pnpm
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Start development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description |
+|------------|--------------------------|
+| `pnpm dev` | Start dev server |
+| `pnpm build` | Create production build |
+| `pnpm start` | Start production server |
+| `pnpm lint` | Run ESLint |
