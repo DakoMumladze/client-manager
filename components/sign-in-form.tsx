@@ -2,22 +2,12 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { signUp } from "@/actions/sign-up";
+import { signIn } from "@/actions/sign-in";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export function SignUpForm() {
-  const [state, formAction, pending] = useActionState(signUp, null);
-
-  if (state?.success) {
-    return (
-      <div className="flex flex-col items-center gap-3 w-full">
-        <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 w-full">
-          <p className="text-sm text-green-800">{state.success}</p>
-        </div>
-      </div>
-    );
-  }
+export function SignInForm() {
+  const [state, formAction, pending] = useActionState(signIn, null);
 
   return (
     <form action={formAction} className="flex flex-col gap-3 w-full">
@@ -36,7 +26,7 @@ export function SignUpForm() {
         id="password"
         name="password"
         type="password"
-        autoComplete="new-password"
+        autoComplete="current-password"
         required
         minLength={6}
         placeholder="Enter your password..."
@@ -48,17 +38,24 @@ export function SignUpForm() {
         </div>
       )}
 
+      <Link
+        href="/auth/forgot-password"
+        className="text-xs text-blue-500 hover:underline self-end"
+      >
+        Forgot password?
+      </Link>
+
       <Button type="submit" disabled={pending} className="mt-1">
-        {pending ? "Creating account..." : "Continue"}
+        {pending ? "Signing in..." : "Sign in"}
       </Button>
 
       <p className="mt-2 text-center text-xs text-stone-500">
-        Already have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link
-          href="/auth/sign-in"
+          href="/auth/sign-up"
           className="text-blue-500 hover:underline"
         >
-          Log in
+          Sign up
         </Link>
       </p>
     </form>
