@@ -44,7 +44,7 @@ export async function middleware(request: NextRequest) {
   ) {
     // No user and trying to access a protected route — redirect to login
     const url = request.nextUrl.clone();
-    url.pathname = "/auth/login";
+    url.pathname = "/auth/sign-in";
     return NextResponse.redirect(url);
   }
 
