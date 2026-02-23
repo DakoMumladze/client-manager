@@ -17,7 +17,12 @@ export async function GET(request: NextRequest) {
     });
 
     if (!error) {
-      redirect(next);
+      if (type === "recovery") {
+        redirect("/auth/reset-password");
+      }
+      // Prevent open redirect by ensuring next is a relative path
+      const safePath = next.startsWith("/") && !next.startsWith("//") ? next : "/";
+      redirect(safePath);
     }
   }
 
