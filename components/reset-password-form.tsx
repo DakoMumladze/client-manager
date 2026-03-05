@@ -34,7 +34,10 @@ export function ResetPasswordForm() {
       />
 
       {state?.error && (
-        <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2">
+        <div
+          role="alert"
+          className="rounded-lg border border-red-200 bg-red-50 px-3 py-2"
+        >
           <p className="text-sm text-red-700">{state.error}</p>
         </div>
       )}
@@ -44,10 +47,7 @@ export function ResetPasswordForm() {
       </Button>
 
       <p className="mt-2 text-center text-xs text-stone-500">
-        <Link
-          href="/auth/sign-in"
-          className="text-blue-500 hover:underline"
-        >
+        <Link href="/auth/sign-in" className="text-blue-500 hover:underline">
           Back to sign in
         </Link>
       </p>

@@ -48,6 +48,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  if (
+    user &&
+    request.nextUrl.pathname.startsWith("/auth") &&
+    !request.nextUrl.pathname.startsWith("/auth/confirm")
+  ) {
+    // Logged-in user trying to access auth pages — redirect to profile
+    const url = request.nextUrl.clone();
+    url.pathname = "/profile";
+    return NextResponse.redirect(url);
+  }
+
   return supabaseResponse;
 }
 
