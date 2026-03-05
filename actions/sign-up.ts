@@ -6,7 +6,10 @@ import { rateLimit } from "@/lib/rate-limit";
 
 type State = { error?: string; success?: string } | null;
 
-export async function signUp(_prevState: State, formData: FormData): Promise<State> {
+export async function signUp(
+  _prevState: State,
+  formData: FormData,
+): Promise<State> {
   const ip = (await headers()).get("x-forwarded-for") ?? "unknown";
   const { limited } = rateLimit(ip, { maxRequests: 5, windowMs: 60_000 });
 

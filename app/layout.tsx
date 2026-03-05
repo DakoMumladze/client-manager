@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Client Manager",
-  description: "A full-stack client management system for managing clients, projects, and tasks.",
+  description:
+    "A full-stack client management system for managing clients, projects, and tasks.",
 };
 
 export default function RootLayout({

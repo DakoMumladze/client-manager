@@ -7,9 +7,15 @@ import { rateLimit } from "@/lib/rate-limit";
 
 type State = { error?: string } | null;
 
-export async function resetPassword(_prevState: State, formData: FormData): Promise<State> {
+export async function resetPassword(
+  _prevState: State,
+  formData: FormData,
+): Promise<State> {
   const ip = (await headers()).get("x-forwarded-for") ?? "unknown";
-  const { limited } = rateLimit(`reset-password:${ip}`, { maxRequests: 3, windowMs: 60_000 });
+  const { limited } = rateLimit(`reset-password:${ip}`, {
+    maxRequests: 3,
+    windowMs: 60_000,
+  });
 
   if (limited) {
     return { error: "Too many attempts. Please try again later." };

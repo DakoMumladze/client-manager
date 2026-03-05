@@ -21,7 +21,8 @@ export async function GET(request: NextRequest) {
         redirect("/auth/reset-password");
       }
       // Prevent open redirect by ensuring next is a relative path
-      const safePath = next.startsWith("/") && !next.startsWith("//") ? next : "/";
+      const safePath =
+        next.startsWith("/") && !next.startsWith("//") ? next : "/";
       redirect(safePath);
     }
   }

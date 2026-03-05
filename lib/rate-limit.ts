@@ -1,6 +1,9 @@
 const requests = new Map<string, { count: number; expiresAt: number }>();
 
-export function rateLimit(key: string, { maxRequests = 5, windowMs = 60_000 } = {}) {
+export function rateLimit(
+  key: string,
+  { maxRequests = 5, windowMs = 60_000 } = {},
+) {
   const now = Date.now();
   const entry = requests.get(key);
 

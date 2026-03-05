@@ -3,7 +3,8 @@ import { cn } from "@/lib/utils";
 
 const variantStyles = {
   primary: "bg-blue-500 text-white hover:bg-blue-600",
-  secondary: "border border-stone-200 bg-white text-stone-800 hover:bg-stone-50",
+  secondary:
+    "border border-stone-200 bg-white text-stone-800 hover:bg-stone-50",
 };
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
