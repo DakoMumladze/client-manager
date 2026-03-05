@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Header } from "@/components/header";
+import { getInitials } from "@/lib/utils";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
@@ -15,14 +16,7 @@ export default async function ProfilePage() {
   const displayName = user.user_metadata?.display_name || "";
   const email = user.email || "";
   const avatarUrl = user.user_metadata?.avatar_url || "";
-  const initials = displayName
-    ? displayName
-        .split(" ")
-        .map((n: string) => n[0])
-        .join("")
-        .toUpperCase()
-        .slice(0, 2)
-    : email[0]?.toUpperCase() || "?";
+  const initials = getInitials(displayName, email);
 
   return (
     <div className="min-h-screen bg-white">
