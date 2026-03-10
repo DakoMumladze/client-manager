@@ -16,7 +16,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     <button
       ref={ref}
       className={cn(
-        "h-9 w-full rounded-md text-sm font-medium disabled:opacity-50 transition-colors",
+        "h-9 w-full cursor-pointer rounded-md text-sm font-medium disabled:opacity-50 transition-colors",
         variantStyles[variant],
         className,
       )}
