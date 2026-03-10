@@ -1,0 +1,84 @@
+"use client";
+
+import { useRef, useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { getInitials } from "@/lib/utils";
+
+export function AvatarUpload({
+  currentAvatarUrl,
+  displayName,
+  email,
+}: {
+  currentAvatarUrl: string;
+  displayName: string;
+  email: string;
+}) {
+  const [preview, setPreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const initials = getInitials(displayName, email);
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setPreview(null);
+      return;
+    }
+    setPreview(URL.createObjectURL(file));
+  }
+
+  const imageSrc = preview || currentAvatarUrl;
+
+  return (
+    <form className="flex flex-col items-center gap-4">
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={displayName || "Avatar"}
+          width={96}
+          height={96}
+          className="h-24 w-24 rounded-full object-cover ring-4 ring-stone-100"
+        />
+      ) : (
+        <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-stone-100 text-3xl font-semibold text-stone-500 ring-4 ring-stone-50">
+          {initials}
+        </div>
+      )}
+
+      <div className="text-center">
+        <p className="text-lg font-semibold text-stone-800">
+          {displayName || "No name set"}
+        </p>
+        <p className="text-sm text-stone-500">{email}</p>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <input
+          ref={fileInputRef}
+          type="file"
+          name="avatar"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+
+        <Button
+          type="button"
+          variant="secondary"
+          className="w-auto px-4"
+          onClick={() => fileInputRef.current?.click()}
+        >
+          {preview ? "Change image" : "Upload photo"}
+        </Button>
+
+        {preview && (
+          <Button type="submit" className="w-auto px-4">
+            Save
+          </Button>
+        )}
+      </div>
+
+      <p className="text-xs text-stone-400">JPEG, PNG, or WebP. Max 2MB.</p>
+    </form>
+  );
+}
