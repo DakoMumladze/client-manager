@@ -1,11 +1,22 @@
 "use client";
 
+import { useActionState, useEffect, useRef } from "react";
+import { changePassword } from "@/actions/change-password";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export function ChangePasswordForm() {
+  const [state, formAction, pending] = useActionState(changePassword, null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (state?.success) {
+      formRef.current?.reset();
+    }
+  }, [state]);
+
   return (
-    <form className="flex flex-col gap-4">
+    <form ref={formRef} action={formAction} className="flex flex-col gap-4">
       <Input
         label="Current password"
         id="currentPassword"
@@ -40,9 +51,27 @@ export function ChangePasswordForm() {
         />
       </div>
 
+      {state?.error && (
+        <div
+          role="alert"
+          className="rounded-lg border border-red-200 bg-red-50 px-3 py-2"
+        >
+          <p className="text-sm text-red-700">{state.error}</p>
+        </div>
+      )}
+
+      {state?.success && (
+        <div
+          role="status"
+          className="rounded-lg border border-green-200 bg-green-50 px-3 py-2"
+        >
+          <p className="text-sm text-green-800">{state.success}</p>
+        </div>
+      )}
+
       <div>
-        <Button type="submit" className="w-auto px-6">
-          Update password
+        <Button type="submit" disabled={pending} className="w-auto px-6">
+          {pending ? "Updating..." : "Update password"}
         </Button>
       </div>
     </form>
