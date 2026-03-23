@@ -22,9 +22,15 @@ export default async function ProfilePage() {
     redirect("/auth/sign-in");
   }
 
-  const displayName = user.user_metadata?.display_name || "";
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("name, avatar_url")
+    .eq("id", user.id)
+    .single();
+
+  const displayName = profile?.name || "";
   const email = user.email || "";
-  const avatarUrl = user.user_metadata?.avatar_url || "";
+  const avatarUrl = profile?.avatar_url || "";
 
   return (
     <div className="min-h-screen bg-stone-50">

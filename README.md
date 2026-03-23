@@ -71,11 +71,37 @@ A full-stack client management system built with Next.js, React, TypeScript, and
 
 ## Getting Started
 
-```bash
-# Install dependencies
-pnpm install
+### 1. Install dependencies
 
-# Start development server
+```bash
+pnpm install
+```
+
+### 2. Set up environment variables
+
+Copy `.env.example` to `.env.local` and fill in your Supabase credentials:
+
+```bash
+cp .env.example .env.local
+```
+
+### 3. Deploy database migrations
+
+Install the Supabase CLI, initialize the project, link it to your remote project, and push the migration:
+
+```bash
+# Link the Supabase project
+npx supabase link --project-ref <your-project-ref>
+
+# Push migrations to your remote database
+npx supabase db push
+```
+
+This creates the `profiles` table, RLS policies, auto-profile-creation trigger, and `avatars` storage bucket.
+
+### 4. Start the dev server
+
+```bash
 pnpm dev
 ```
 
