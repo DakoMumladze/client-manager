@@ -47,6 +47,7 @@ export function AvatarUpload({
           alt={displayName || "Avatar"}
           width={96}
           height={96}
+          unoptimized
           className="h-24 w-24 rounded-full object-cover ring-4 ring-stone-100"
         />
       ) : (

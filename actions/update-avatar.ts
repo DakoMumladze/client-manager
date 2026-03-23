@@ -66,9 +66,10 @@ export async function updateAvatar(
     data: { publicUrl },
   } = supabase.storage.from("avatars").getPublicUrl(filePath);
 
-  const { error: updateError } = await supabase.auth.updateUser({
-    data: { avatar_url: publicUrl },
-  });
+  const { error: updateError } = await supabase
+    .from("profiles")
+    .update({ avatar_url: publicUrl })
+    .eq("id", user.id);
 
   if (updateError) {
     return { error: "Failed to save avatar. Please try again." };

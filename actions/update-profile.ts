@@ -32,9 +32,18 @@ export async function updateProfile(
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.updateUser({
-    data: { display_name: displayName.trim() },
-  });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: "You must be signed in." };
+  }
+
+  const { error } = await supabase
+    .from("profiles")
+    .update({ name: displayName.trim() })
+    .eq("id", user.id);
 
   if (error) {
     return { error: error.message };
