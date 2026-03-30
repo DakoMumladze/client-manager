@@ -18,6 +18,12 @@ export async function Header() {
           {user ? (
             <>
               <Link
+                href="/clients"
+                className="text-sm font-medium text-stone-600 hover:text-stone-800 transition-colors"
+              >
+                Clients
+              </Link>
+              <Link
                 href="/profile"
                 className="text-sm font-medium text-stone-600 hover:text-stone-800 transition-colors"
               >
