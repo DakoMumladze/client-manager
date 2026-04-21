@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, Mail, Phone, StickyNote, CalendarDays, Pencil } from "lucide-react";
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { Header } from "@/components/header";
+import { AppShell } from "@/components/app-shell";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { DeleteClientButton } from "@/components/delete-client-button";
 import { Button } from "@/components/ui/button";
@@ -40,9 +40,8 @@ export default async function ClientDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <Header />
-      <main className="mx-auto max-w-2xl px-4 py-10">
+    <AppShell>
+      <div className="mx-auto max-w-2xl px-4 py-10">
         <div className="mb-6">
           <Link
             href="/clients"
@@ -111,7 +110,7 @@ export default async function ClientDetailPage({
           </Link>
           <DeleteClientButton clientId={client.id} />
         </div>
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }

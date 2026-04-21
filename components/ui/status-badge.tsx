@@ -1,12 +1,11 @@
 import { cn } from "@/lib/utils";
+import type { ClientStatus } from "@/lib/types";
 
-const statusStyles = {
+const statusStyles: Record<ClientStatus, string> = {
   lead: "bg-stone-100 text-stone-700 border-stone-200",
   active: "bg-green-50 text-green-700 border-green-200",
   archived: "bg-yellow-50 text-yellow-700 border-yellow-200",
-} as const;
-
-export type ClientStatus = "lead" | "active" | "archived";
+};
 
 export function StatusBadge({ status }: { status: ClientStatus }) {
   return (

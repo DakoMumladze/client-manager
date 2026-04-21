@@ -28,8 +28,8 @@ export async function resetPassword(
     return { error: "Password and confirmation are required." };
   }
 
-  if (password.length < 6) {
-    return { error: "Password must be at least 6 characters." };
+  if (password.length < 8) {
+    return { error: "Password must be at least 8 characters." };
   }
 
   if (password !== confirmPassword) {

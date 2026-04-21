@@ -1,10 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { rateLimit } from "@/lib/rate-limit";
+import type { ClientStatus } from "@/lib/types";
+
+const VALID_STATUSES: ClientStatus[] = ["lead", "active", "archived"];
 
 type State = { error?: string; success?: string } | null;
 
@@ -46,22 +48,28 @@ export async function updateClient(
     return { error: "You must be signed in." };
   }
 
+  const statusValue: ClientStatus =
+    typeof status === "string" && VALID_STATUSES.includes(status as ClientStatus)
+      ? (status as ClientStatus)
+      : "lead";
+
   const { error } = await supabase
     .from("clients")
     .update({
-      name: (name as string).trim(),
-      email: (email as string) || null,
-      phone: (phone as string) || null,
-      status: (status as string) || "lead",
-      notes: (notes as string) || null,
+      name: name.trim(),
+      email: typeof email === "string" ? email.trim() || null : null,
+      phone: typeof phone === "string" ? phone.trim() || null : null,
+      status: statusValue,
+      notes: typeof notes === "string" ? notes.trim() || null : null,
     })
     .eq("id", clientId)
     .eq("user_id", user.id);
 
   if (error) {
-    return { error: error.message };
+    return { error: "Failed to update client. Please try again." };
   }
 
   revalidatePath(`/clients/${clientId}`);
-  redirect(`/clients/${clientId}`);
+  revalidatePath("/clients");
+  return { success: "Client updated." };
 }

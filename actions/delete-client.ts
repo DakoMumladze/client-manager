@@ -34,7 +34,7 @@ export async function deleteClient(
     .eq("user_id", user.id);
 
   if (error) {
-    return { error: error.message };
+    return { error: "Failed to delete client. Please try again." };
   }
 
   revalidatePath("/clients");
