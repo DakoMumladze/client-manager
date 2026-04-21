@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { Header } from "@/components/header";
+import { AppShell } from "@/components/app-shell";
 import { ClientForm } from "@/components/client-form";
 import {
   Card,
@@ -39,9 +39,8 @@ export default async function EditClientPage({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <Header />
-      <main className="mx-auto max-w-2xl px-4 py-10">
+    <AppShell>
+      <div className="mx-auto max-w-2xl px-4 py-10">
         <div className="mb-6">
           <Link
             href={`/clients/${client.id}`}
@@ -63,7 +62,7 @@ export default async function EditClientPage({
             <ClientForm client={client} />
           </CardContent>
         </Card>
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }

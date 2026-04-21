@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Plus, Users } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Header } from "@/components/header";
+import { AppShell } from "@/components/app-shell";
 import { ClientCard } from "@/components/client-card";
 import { ClientsFilter } from "@/components/clients-filter";
 import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { getClients } from "@/actions/get-clients";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function ClientsPage({
   searchParams,
@@ -22,27 +24,11 @@ export default async function ClientsPage({
   }
 
   const { search, status } = await searchParams;
-
-  let query = supabase
-    .from("clients")
-    .select("*")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false });
-
-  if (search) {
-    query = query.ilike("name", `%${search}%`);
-  }
-
-  if (status) {
-    query = query.eq("status", status);
-  }
-
-  const { data: clients } = await query;
+  const { data: clients } = await getClients({ search, status });
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <Header />
-      <main className="mx-auto max-w-5xl px-4 py-10">
+    <AppShell>
+      <div className="mx-auto max-w-5xl px-4 py-10">
         <div className="mb-6 flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-stone-800">Clients</h1>
           <Link href="/clients/new">
@@ -64,19 +50,28 @@ export default async function ClientsPage({
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center rounded-xl border bg-white py-16">
-            <Users className="size-10 text-stone-300" />
-            <p className="mt-3 text-sm text-stone-500">No clients found.</p>
-            <Link
-              href="/clients/new"
-              className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-500 hover:text-blue-600"
-            >
-              <Plus className="size-3.5" />
-              Add your first client
-            </Link>
-          </div>
+          <EmptyState
+            icon={<Users className="size-10" />}
+            title="No clients found."
+            description={
+              search || status
+                ? "Try adjusting your filters."
+                : "Get started by adding your first client."
+            }
+            action={
+              !search && !status ? (
+                <Link
+                  href="/clients/new"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-blue-500 hover:text-blue-600"
+                >
+                  <Plus className="size-3.5" />
+                  Add your first client
+                </Link>
+              ) : undefined
+            }
+          />
         )}
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }

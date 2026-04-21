@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Header } from "@/components/header";
+import { AppShell } from "@/components/app-shell";
 import { ProfileForm } from "@/components/profile-form";
 import { AvatarUpload } from "@/components/avatar-upload";
 import { ChangePasswordForm } from "@/components/change-password-form";
@@ -33,9 +33,8 @@ export default async function ProfilePage() {
   const avatarUrl = profile?.avatar_url || "";
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <Header />
-      <main className="mx-auto max-w-2xl px-4 py-10">
+    <AppShell>
+      <div className="mx-auto max-w-2xl px-4 py-10">
         <Card>
           <CardContent className="pt-6">
             <AvatarUpload
@@ -65,7 +64,7 @@ export default async function ProfilePage() {
             <ChangePasswordForm />
           </CardContent>
         </Card>
-      </main>
-    </div>
+      </div>
+    </AppShell>
   );
 }

@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 
 const statuses = [
   { label: "All Statuses", value: "" },
@@ -38,17 +39,17 @@ export function ClientsFilter() {
           className="pl-8"
         />
       </div>
-      <select
+      <Select
         value={currentStatus}
         onChange={(e) => updateParams("status", e.target.value)}
-        className="h-9 rounded-md border border-stone-200 bg-stone-100 px-2.5 text-sm text-stone-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+        className="sm:w-40"
       >
         {statuses.map((s) => (
           <option key={s.value} value={s.value}>
             {s.label}
           </option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 }

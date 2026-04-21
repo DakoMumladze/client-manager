@@ -1,17 +1,10 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { StatusBadge, type ClientStatus } from "@/components/ui/status-badge";
+import { StatusBadge } from "@/components/ui/status-badge";
+import type { Client } from "@/lib/types";
 
-export type Client = {
-  id: string;
-  name: string;
-  email: string | null;
-  phone: string | null;
-  status: ClientStatus;
-  notes: string | null;
-  created_at: string;
-};
+export type { Client };
 
 export function ClientCard({ client }: { client: Client }) {
   return (
