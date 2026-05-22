@@ -5,14 +5,19 @@ import {
   CalendarDays,
   DollarSign,
   Pencil,
+  Plus,
+  ListTodo,
 } from "lucide-react";
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AppShell } from "@/components/app-shell";
 import { ProjectStatusBadge } from "@/components/ui/project-status-badge";
 import { DeleteProjectButton } from "@/components/delete-project-button";
+import { TaskList } from "@/components/task-list";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Task } from "@/lib/types";
 
 export default async function ProjectDetailPage({
   params,
@@ -29,13 +34,21 @@ export default async function ProjectDetailPage({
     redirect("/auth/sign-in");
   }
 
-  const { data: project } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("id", projectId)
-    .eq("client_id", id)
-    .eq("user_id", user.id)
-    .single();
+  const [{ data: project }, { data: tasks }] = await Promise.all([
+    supabase
+      .from("projects")
+      .select("*")
+      .eq("id", projectId)
+      .eq("client_id", id)
+      .eq("user_id", user.id)
+      .single(),
+    supabase
+      .from("tasks")
+      .select("*")
+      .eq("project_id", projectId)
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false }),
+  ]);
 
   if (!project) {
     notFound();
@@ -125,6 +138,35 @@ export default async function ProjectDetailPage({
             </Button>
           </Link>
           <DeleteProjectButton projectId={project.id} clientId={id} />
+        </div>
+
+        <div className="mt-10">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-base font-semibold text-stone-800">Tasks</h2>
+            <Link href={`/clients/${id}/projects/${project.id}/tasks/new`}>
+              <Button
+                variant="primary"
+                className="w-auto px-4 inline-flex items-center gap-1.5"
+              >
+                <Plus className="size-3.5" />
+                Add Task
+              </Button>
+            </Link>
+          </div>
+
+          {tasks && tasks.length > 0 ? (
+            <TaskList
+              tasks={tasks as Task[]}
+              clientId={id}
+              projectId={project.id}
+            />
+          ) : (
+            <EmptyState
+              icon={<ListTodo className="size-8" />}
+              title="No tasks yet"
+              description="Add a task to start tracking work on this project."
+            />
+          )}
         </div>
       </div>
     </AppShell>
