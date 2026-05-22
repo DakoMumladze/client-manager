@@ -36,7 +36,7 @@ export function DeleteTaskButton({
         <button
           type="button"
           aria-label="Delete task"
-          className="rounded-md p-1.5 text-stone-400 transition-colors hover:bg-red-50 hover:text-red-600"
+          className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-red-50 hover:text-red-600"
         >
           <Trash2 className="size-3.5" />
         </button>

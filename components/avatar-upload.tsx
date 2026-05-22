@@ -17,7 +17,9 @@ export function AvatarUpload({
 }) {
   const [state, formAction, pending] = useActionState(updateAvatar, null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [clearedForState, setClearedForState] = useState<string | undefined>(undefined);
+  const [clearedForState, setClearedForState] = useState<string | undefined>(
+    undefined,
+  );
   const fileInputRef = useRef<HTMLInputElement>(null);
   const initials = getInitials(displayName, email);
 
@@ -48,19 +50,19 @@ export function AvatarUpload({
           width={96}
           height={96}
           unoptimized
-          className="h-24 w-24 rounded-full object-cover ring-4 ring-stone-100"
+          className="h-24 w-24 rounded-full object-cover ring-4 ring-border"
         />
       ) : (
-        <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-stone-100 text-3xl font-semibold text-stone-500 ring-4 ring-stone-50">
+        <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-muted text-3xl font-semibold text-muted-foreground ring-4 ring-border">
           {initials}
         </div>
       )}
 
       <div className="text-center">
-        <p className="text-lg font-semibold text-stone-800">
+        <p className="text-lg font-semibold text-foreground">
           {displayName || "No name set"}
         </p>
-        <p className="text-sm text-stone-500">{email}</p>
+        <p className="text-sm text-muted-foreground">{email}</p>
       </div>
 
       {state?.error && (
@@ -108,7 +110,9 @@ export function AvatarUpload({
         )}
       </div>
 
-      <p className="text-xs text-stone-400">JPEG, PNG, or WebP. Max 2MB.</p>
+      <p className="text-xs text-muted-foreground">
+        JPEG, PNG, or WebP. Max 2MB.
+      </p>
     </form>
   );
 }

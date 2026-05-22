@@ -16,7 +16,7 @@ export function ProjectCard({
       href={`/clients/${clientId}/projects/${project.id}`}
       className="block"
     >
-      <Card className="transition-shadow hover:shadow-md">
+      <Card className="transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg">
         <CardHeader>
           <div className="flex items-center justify-between gap-2">
             <CardTitle className="text-base">{project.name}</CardTitle>
@@ -24,14 +24,14 @@ export function ProjectCard({
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col gap-1.5 text-sm text-stone-500">
+          <div className="flex flex-col gap-1.5 text-sm text-muted-foreground">
             {project.description && (
               <p className="line-clamp-2">{project.description}</p>
             )}
             <div className="flex flex-wrap gap-3">
               {project.deadline && (
                 <p className="flex items-center gap-1.5">
-                  <CalendarDays className="size-3.5 text-stone-400" />
+                  <CalendarDays className="size-3.5 text-muted-foreground" />
                   {new Date(
                     project.deadline + "T00:00:00",
                   ).toLocaleDateString()}
@@ -39,7 +39,7 @@ export function ProjectCard({
               )}
               {project.budget !== null && (
                 <p className="flex items-center gap-1.5">
-                  <DollarSign className="size-3.5 text-stone-400" />
+                  <DollarSign className="size-3.5 text-muted-foreground" />
                   {project.budget.toLocaleString("en-US", {
                     minimumFractionDigits: 0,
                     maximumFractionDigits: 2,

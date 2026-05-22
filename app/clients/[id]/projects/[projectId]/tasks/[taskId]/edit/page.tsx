@@ -46,7 +46,7 @@ export default async function EditTaskPage({
         <div className="mb-6">
           <Link
             href={`/clients/${id}/projects/${projectId}`}
-            className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="size-4" />
             Back to project

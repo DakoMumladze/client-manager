@@ -2,9 +2,12 @@ import { cn } from "@/lib/utils";
 import type { ProjectStatus } from "@/lib/types";
 
 const statusStyles: Record<ProjectStatus, string> = {
-  in_progress: "bg-blue-50 text-blue-700 border-blue-200",
-  completed: "bg-green-50 text-green-700 border-green-200",
-  on_hold: "bg-yellow-50 text-yellow-700 border-yellow-200",
+  in_progress:
+    "border-blue-500/20 bg-blue-500/10 text-blue-700 dark:text-blue-400",
+  completed:
+    "border-green-500/20 bg-green-500/10 text-green-700 dark:text-green-400",
+  on_hold:
+    "border-amber-500/20 bg-amber-500/10 text-amber-700 dark:text-amber-400",
 };
 
 const statusLabels: Record<ProjectStatus, string> = {

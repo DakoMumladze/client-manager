@@ -30,9 +30,9 @@ export default async function ClientsPage({
     <AppShell>
       <div className="mx-auto max-w-5xl px-4 py-10">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-semibold text-stone-800">Clients</h1>
+          <h1 className="text-2xl font-semibold text-foreground">Clients</h1>
           <Link href="/clients/new">
-            <Button className="w-auto px-4 inline-flex items-center gap-1.5">
+            <Button className="inline-flex w-auto items-center gap-1.5 px-4">
               <Plus className="size-4" />
               Add Client
             </Button>
@@ -62,7 +62,7 @@ export default async function ClientsPage({
               !search && !status ? (
                 <Link
                   href="/clients/new"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-blue-500 hover:text-blue-600"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/90"
                 >
                   <Plus className="size-3.5" />
                   Add your first client

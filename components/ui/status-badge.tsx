@@ -2,9 +2,11 @@ import { cn } from "@/lib/utils";
 import type { ClientStatus } from "@/lib/types";
 
 const statusStyles: Record<ClientStatus, string> = {
-  lead: "bg-stone-100 text-stone-700 border-stone-200",
-  active: "bg-green-50 text-green-700 border-green-200",
-  archived: "bg-yellow-50 text-yellow-700 border-yellow-200",
+  lead: "border-border bg-muted text-muted-foreground",
+  active:
+    "border-green-500/20 bg-green-500/10 text-green-700 dark:text-green-400",
+  archived:
+    "border-amber-500/20 bg-amber-500/10 text-amber-700 dark:text-amber-400",
 };
 
 export function StatusBadge({ status }: { status: ClientStatus }) {

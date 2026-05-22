@@ -48,7 +48,9 @@ export default async function ProfilePage() {
         <Card className="mt-6">
           <CardHeader>
             <CardTitle>Personal Information</CardTitle>
-            <CardDescription>Update your name and view your email address.</CardDescription>
+            <CardDescription>
+              Update your name and view your email address.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <ProfileForm defaultName={displayName} email={email} />
@@ -58,7 +60,9 @@ export default async function ProfilePage() {
         <Card className="mt-6">
           <CardHeader>
             <CardTitle>Password</CardTitle>
-            <CardDescription>Change your password to keep your account secure.</CardDescription>
+            <CardDescription>
+              Change your password to keep your account secure.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <ChangePasswordForm />

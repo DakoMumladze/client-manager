@@ -9,7 +9,7 @@ export function Toaster() {
       toastOptions={{
         classNames: {
           toast:
-            "font-sans text-sm rounded-lg border border-stone-200 bg-white text-stone-800 shadow-lg",
+            "font-sans text-sm rounded-lg border border-border bg-card text-foreground shadow-lg",
           success: "border-green-200 bg-green-50 text-green-800",
           error: "border-red-200 bg-red-50 text-red-800",
         },

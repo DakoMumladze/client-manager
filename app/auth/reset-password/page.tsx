@@ -14,11 +14,11 @@ export default async function ResetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-card">
       <Header />
       <main className="flex flex-col items-center px-4 pt-24">
         <div className="w-full max-w-80">
-          <h1 className="mb-8 text-center text-3xl font-semibold leading-tight text-stone-800">
+          <h1 className="mb-8 text-center text-3xl font-semibold leading-tight text-foreground">
             Reset password
           </h1>
           <ResetPasswordForm />

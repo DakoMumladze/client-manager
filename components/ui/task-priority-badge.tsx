@@ -2,9 +2,10 @@ import { cn } from "@/lib/utils";
 import type { TaskPriority } from "@/lib/types";
 
 const priorityStyles: Record<TaskPriority, string> = {
-  low: "bg-stone-100 text-stone-600 border-stone-200",
-  medium: "bg-amber-50 text-amber-700 border-amber-200",
-  high: "bg-red-50 text-red-700 border-red-200",
+  low: "border-border bg-muted text-muted-foreground",
+  medium:
+    "border-amber-500/20 bg-amber-500/10 text-amber-700 dark:text-amber-400",
+  high: "border-red-500/20 bg-red-500/10 text-red-700 dark:text-red-400",
 };
 
 const priorityLabels: Record<TaskPriority, string> = {

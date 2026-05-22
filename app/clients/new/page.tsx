@@ -28,7 +28,7 @@ export default async function NewClientPage() {
         <div className="mb-6">
           <Link
             href="/clients"
-            className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="size-4" />
             Back to clients
@@ -38,9 +38,7 @@ export default async function NewClientPage() {
         <Card>
           <CardHeader>
             <CardTitle>New Client</CardTitle>
-            <CardDescription>
-              Add a new client to your account.
-            </CardDescription>
+            <CardDescription>Add a new client to your account.</CardDescription>
           </CardHeader>
           <CardContent>
             <ClientForm />
