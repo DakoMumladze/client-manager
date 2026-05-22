@@ -27,12 +27,12 @@ export function SignInForm() {
 
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
-          <label htmlFor="password" className="text-xs text-stone-500">
+          <label htmlFor="password" className="text-xs text-muted-foreground">
             Password
           </label>
           <Link
             href="/auth/forgot-password"
-            className="text-xs text-blue-500 hover:underline"
+            className="text-xs text-primary hover:underline"
           >
             Forgot password?
           </Link>
@@ -52,7 +52,7 @@ export function SignInForm() {
           <Button
             type="button"
             onClick={() => setShowPassword((v) => !v)}
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 h-auto w-auto bg-transparent hover:bg-transparent p-0 text-stone-400 hover:text-stone-600"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 h-auto w-auto bg-transparent hover:bg-transparent p-0 text-muted-foreground hover:text-muted-foreground"
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
             {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -67,7 +67,11 @@ export function SignInForm() {
         </div>
       )}
 
-      <Button type="submit" disabled={pending} className="mt-1 flex items-center justify-center gap-2">
+      <Button
+        type="submit"
+        disabled={pending}
+        className="mt-1 flex items-center justify-center gap-2"
+      >
         {pending ? (
           <>
             <Loader2 size={15} className="animate-spin" />
@@ -78,9 +82,12 @@ export function SignInForm() {
         )}
       </Button>
 
-      <p className="mt-2 text-center text-sm text-stone-500">
+      <p className="mt-2 text-center text-sm text-muted-foreground">
         Don&apos;t have an account?{" "}
-        <Link href="/auth/sign-up" className="font-medium text-blue-500 hover:underline">
+        <Link
+          href="/auth/sign-up"
+          className="font-medium text-primary hover:underline"
+        >
           Create one free
         </Link>
       </p>

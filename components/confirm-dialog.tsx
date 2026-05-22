@@ -41,7 +41,11 @@ export function ConfirmDialog({
         </DialogHeader>
         <div className="mt-6 flex justify-end gap-2">
           <DialogClose asChild>
-            <Button variant="secondary" className="w-auto px-4" disabled={pending}>
+            <Button
+              variant="secondary"
+              className="w-auto px-4"
+              disabled={pending}
+            >
               {cancelLabel}
             </Button>
           </DialogClose>

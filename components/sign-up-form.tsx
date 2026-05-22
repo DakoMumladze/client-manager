@@ -18,19 +18,21 @@ export function SignUpForm() {
   if (state?.success) {
     return (
       <div className="flex flex-col items-center gap-4 w-full py-4">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-500">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Mail size={26} />
         </div>
         <div className="text-center">
-          <h2 className="text-base font-semibold text-stone-800">Check your email</h2>
-          <p className="mt-1.5 text-sm text-stone-500 leading-relaxed max-w-xs">
+          <h2 className="text-base font-semibold text-foreground">
+            Check your email
+          </h2>
+          <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed max-w-xs">
             {state.success}
           </p>
         </div>
-        <div className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-center">
-          <p className="text-xs text-stone-500">
+        <div className="w-full rounded-lg border border-border bg-muted px-4 py-3 text-center">
+          <p className="text-xs text-muted-foreground">
             Didn&apos;t receive it?{" "}
-            <span className="text-blue-500 hover:underline cursor-pointer font-medium">
+            <span className="text-primary hover:underline cursor-pointer font-medium">
               Check your spam folder
             </span>{" "}
             or try again.
@@ -38,7 +40,7 @@ export function SignUpForm() {
         </div>
         <Link
           href="/auth/sign-in"
-          className="mt-1 text-sm font-medium text-blue-500 hover:underline transition-colors"
+          className="mt-1 text-sm font-medium text-primary hover:underline transition-colors"
         >
           Back to sign in
         </Link>
@@ -79,7 +81,7 @@ export function SignUpForm() {
           <Button
             type="button"
             onClick={() => setShowPassword((v) => !v)}
-            className="absolute right-2.5 bottom-[9px] h-auto w-auto bg-transparent hover:bg-transparent p-0 text-stone-400 hover:text-stone-600"
+            className="absolute right-2.5 bottom-[9px] h-auto w-auto bg-transparent hover:bg-transparent p-0 text-muted-foreground hover:text-muted-foreground"
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
             {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -93,13 +95,13 @@ export function SignUpForm() {
                 <div
                   key={i}
                   className={`h-1 flex-1 rounded-full transition-all duration-300 ${
-                    strength.score >= i ? strength.color : "bg-stone-200"
+                    strength.score >= i ? strength.color : "bg-muted"
                   }`}
                 />
               ))}
             </div>
             {strength.label && (
-              <p className="text-xs text-stone-500">
+              <p className="text-xs text-muted-foreground">
                 Strength:{" "}
                 <span
                   className={
@@ -119,7 +121,7 @@ export function SignUpForm() {
           </div>
         )}
 
-        <p className="text-xs text-stone-400 mt-0.5">
+        <p className="text-xs text-muted-foreground mt-0.5">
           Use 8+ characters with letters, numbers &amp; symbols.
         </p>
       </div>
@@ -131,7 +133,11 @@ export function SignUpForm() {
         </div>
       )}
 
-      <Button type="submit" disabled={pending} className="mt-1 flex items-center justify-center gap-2">
+      <Button
+        type="submit"
+        disabled={pending}
+        className="mt-1 flex items-center justify-center gap-2"
+      >
         {pending ? (
           <>
             <Loader2 size={15} className="animate-spin" />
@@ -142,9 +148,12 @@ export function SignUpForm() {
         )}
       </Button>
 
-      <p className="mt-2 text-center text-sm text-stone-500">
+      <p className="mt-2 text-center text-sm text-muted-foreground">
         Already have an account?{" "}
-        <Link href="/auth/sign-in" className="font-medium text-blue-500 hover:underline">
+        <Link
+          href="/auth/sign-in"
+          className="font-medium text-primary hover:underline"
+        >
           Sign in
         </Link>
       </p>

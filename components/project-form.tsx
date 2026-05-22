@@ -93,7 +93,7 @@ export function ProjectForm({
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="description" className="text-xs text-stone-500">
+        <label htmlFor="description" className="text-xs text-muted-foreground">
           Description
         </label>
         <textarea
@@ -102,7 +102,7 @@ export function ProjectForm({
           rows={4}
           defaultValue={project?.description ?? ""}
           placeholder="Project description..."
-          className="w-full rounded-md border border-stone-200 bg-stone-100 px-2.5 py-2 text-sm text-stone-800 placeholder:text-stone-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+          className="w-full rounded-md border border-border bg-muted px-2.5 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
         />
       </div>
 

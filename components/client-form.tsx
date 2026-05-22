@@ -18,9 +18,7 @@ const statuses = [
 
 export function ClientForm({ client }: { client?: Client }) {
   const router = useRouter();
-  const action = client
-    ? updateClient.bind(null, client.id)
-    : createClient;
+  const action = client ? updateClient.bind(null, client.id) : createClient;
 
   const [state, formAction, pending] = useActionState(action, null);
 
@@ -82,7 +80,7 @@ export function ClientForm({ client }: { client?: Client }) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="notes" className="text-xs text-stone-500">
+        <label htmlFor="notes" className="text-xs text-muted-foreground">
           Notes
         </label>
         <textarea
@@ -91,17 +89,13 @@ export function ClientForm({ client }: { client?: Client }) {
           rows={4}
           defaultValue={client?.notes ?? ""}
           placeholder="Any notes about this client..."
-          className="w-full rounded-md border border-stone-200 bg-stone-100 px-2.5 py-2 text-sm text-stone-800 placeholder:text-stone-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+          className="w-full rounded-md border border-border bg-muted px-2.5 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
         />
       </div>
 
       <div>
         <Button type="submit" disabled={pending} className="w-auto px-6">
-          {pending
-            ? "Saving..."
-            : client
-              ? "Save changes"
-              : "Create client"}
+          {pending ? "Saving..." : client ? "Save changes" : "Create client"}
         </Button>
       </div>
     </form>

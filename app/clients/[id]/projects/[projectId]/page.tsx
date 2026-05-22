@@ -60,7 +60,7 @@ export default async function ProjectDetailPage({
         <div className="mb-6">
           <Link
             href={`/clients/${id}`}
-            className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="size-4" />
             Back to client
@@ -77,19 +77,19 @@ export default async function ProjectDetailPage({
           <CardContent>
             <dl className="grid gap-4 sm:grid-cols-2">
               <div className="flex items-start gap-2 sm:col-span-2">
-                <StickyNote className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <StickyNote className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Description</dt>
-                  <dd className="whitespace-pre-wrap text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Description</dt>
+                  <dd className="whitespace-pre-wrap text-sm text-foreground">
                     {project.description || "—"}
                   </dd>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <CalendarDays className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <CalendarDays className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Deadline</dt>
-                  <dd className="text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Deadline</dt>
+                  <dd className="text-sm text-foreground">
                     {project.deadline
                       ? new Date(
                           project.deadline + "T00:00:00",
@@ -99,10 +99,10 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <DollarSign className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <DollarSign className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Budget</dt>
-                  <dd className="text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Budget</dt>
+                  <dd className="text-sm text-foreground">
                     {project.budget !== null
                       ? project.budget.toLocaleString("en-US", {
                           style: "currency",
@@ -115,10 +115,10 @@ export default async function ProjectDetailPage({
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <CalendarDays className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <CalendarDays className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Created</dt>
-                  <dd className="text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Created</dt>
+                  <dd className="text-sm text-foreground">
                     {new Date(project.created_at).toLocaleDateString()}
                   </dd>
                 </div>
@@ -142,7 +142,7 @@ export default async function ProjectDetailPage({
 
         <div className="mt-10">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-base font-semibold text-stone-800">Tasks</h2>
+            <h2 className="text-base font-semibold text-foreground">Tasks</h2>
             <Link href={`/clients/${id}/projects/${project.id}/tasks/new`}>
               <Button
                 variant="primary"

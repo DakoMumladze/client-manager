@@ -60,7 +60,7 @@ export default async function ClientDetailPage({
         <div className="mb-6">
           <Link
             href="/clients"
-            className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="size-4" />
             Back to clients
@@ -77,37 +77,37 @@ export default async function ClientDetailPage({
           <CardContent>
             <dl className="grid gap-4 sm:grid-cols-2">
               <div className="flex items-start gap-2">
-                <Mail className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <Mail className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Email</dt>
-                  <dd className="text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Email</dt>
+                  <dd className="text-sm text-foreground">
                     {client.email || "—"}
                   </dd>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Phone className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <Phone className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Phone</dt>
-                  <dd className="text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Phone</dt>
+                  <dd className="text-sm text-foreground">
                     {client.phone || "—"}
                   </dd>
                 </div>
               </div>
               <div className="flex items-start gap-2 sm:col-span-2">
-                <StickyNote className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <StickyNote className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Notes</dt>
-                  <dd className="whitespace-pre-wrap text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Notes</dt>
+                  <dd className="whitespace-pre-wrap text-sm text-foreground">
                     {client.notes || "—"}
                   </dd>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <CalendarDays className="mt-0.5 size-3.5 shrink-0 text-stone-400" />
+                <CalendarDays className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
                 <div>
-                  <dt className="text-xs text-stone-500">Created</dt>
-                  <dd className="text-sm text-stone-800">
+                  <dt className="text-xs text-muted-foreground">Created</dt>
+                  <dd className="text-sm text-foreground">
                     {new Date(client.created_at).toLocaleDateString()}
                   </dd>
                 </div>
@@ -132,7 +132,9 @@ export default async function ClientDetailPage({
         {/* Projects section */}
         <div className="mt-10">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-base font-semibold text-stone-800">Projects</h2>
+            <h2 className="text-base font-semibold text-foreground">
+              Projects
+            </h2>
             <Link href={`/clients/${client.id}/projects/new`}>
               <Button
                 variant="primary"

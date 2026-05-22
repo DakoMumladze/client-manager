@@ -36,7 +36,7 @@ export function TaskItem({
   }
 
   return (
-    <div className="flex items-start gap-3 rounded-lg border border-stone-200 bg-white p-3">
+    <div className="flex items-start gap-3 rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/40">
       <input
         type="checkbox"
         checked={optimisticCompleted}
@@ -45,15 +45,15 @@ export function TaskItem({
         aria-label={
           optimisticCompleted ? "Mark task incomplete" : "Mark task complete"
         }
-        className="mt-0.5 size-4 shrink-0 cursor-pointer rounded border-stone-300 text-blue-500 focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed"
+        className="mt-0.5 size-4 shrink-0 cursor-pointer rounded border-border text-primary transition-colors focus:ring-1 focus:ring-ring disabled:cursor-not-allowed"
       />
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
           <p
             className={cn(
-              "truncate text-sm font-medium text-stone-800",
-              optimisticCompleted && "text-stone-400 line-through",
+              "truncate text-sm font-medium text-foreground transition-colors",
+              optimisticCompleted && "text-muted-foreground line-through",
             )}
           >
             {task.title}
@@ -62,14 +62,14 @@ export function TaskItem({
         </div>
 
         {task.description && (
-          <p className="mt-1 line-clamp-2 text-sm text-stone-500">
+          <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
             {task.description}
           </p>
         )}
 
         {task.due_date && (
-          <p className="mt-1 flex items-center gap-1.5 text-xs text-stone-500">
-            <CalendarDays className="size-3.5 text-stone-400" />
+          <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+            <CalendarDays className="size-3.5 text-muted-foreground" />
             {new Date(task.due_date + "T00:00:00").toLocaleDateString()}
           </p>
         )}
@@ -79,7 +79,7 @@ export function TaskItem({
         <Link
           href={`/clients/${clientId}/projects/${projectId}/tasks/${task.id}/edit`}
           aria-label="Edit task"
-          className="rounded-md p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
+          className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
         >
           <Pencil className="size-3.5" />
         </Link>

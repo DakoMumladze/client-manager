@@ -20,7 +20,7 @@ export function ForgotPasswordForm() {
         </div>
         <Link
           href="/auth/sign-in"
-          className="text-sm text-blue-500 hover:underline"
+          className="text-sm text-primary hover:underline"
         >
           Back to sign in
         </Link>
@@ -53,9 +53,9 @@ export function ForgotPasswordForm() {
         {pending ? "Sending..." : "Send reset link"}
       </Button>
 
-      <p className="mt-2 text-center text-xs text-stone-500">
+      <p className="mt-2 text-center text-xs text-muted-foreground">
         Remember your password?{" "}
-        <Link href="/auth/sign-in" className="text-blue-500 hover:underline">
+        <Link href="/auth/sign-in" className="text-primary hover:underline">
           Sign in
         </Link>
       </p>

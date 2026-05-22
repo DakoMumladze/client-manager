@@ -9,7 +9,7 @@ export type { Client };
 export function ClientCard({ client }: { client: Client }) {
   return (
     <Link href={`/clients/${client.id}`} className="block">
-      <Card className="transition-shadow hover:shadow-md">
+      <Card className="transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg">
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-base">{client.name}</CardTitle>
@@ -17,16 +17,16 @@ export function ClientCard({ client }: { client: Client }) {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col gap-1.5 text-sm text-stone-500">
+          <div className="flex flex-col gap-1.5 text-sm text-muted-foreground">
             {client.email && (
               <p className="flex items-center gap-1.5">
-                <Mail className="size-3.5 text-stone-400" />
+                <Mail className="size-3.5 text-muted-foreground" />
                 {client.email}
               </p>
             )}
             {client.phone && (
               <p className="flex items-center gap-1.5">
-                <Phone className="size-3.5 text-stone-400" />
+                <Phone className="size-3.5 text-muted-foreground" />
                 {client.phone}
               </p>
             )}

@@ -46,8 +46,8 @@ export function ResetPasswordForm() {
         {pending ? "Resetting..." : "Reset password"}
       </Button>
 
-      <p className="mt-2 text-center text-xs text-stone-500">
-        <Link href="/auth/sign-in" className="text-blue-500 hover:underline">
+      <p className="mt-2 text-center text-xs text-muted-foreground">
+        <Link href="/auth/sign-in" className="text-primary hover:underline">
           Back to sign in
         </Link>
       </p>

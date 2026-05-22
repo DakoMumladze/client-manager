@@ -37,7 +37,7 @@ const DialogContent = React.forwardRef<
     <Dialog.Content
       ref={ref}
       className={cn(
-        "fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-stone-200 bg-white p-6 shadow-lg",
+        "fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border bg-card p-6 shadow-lg",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -46,7 +46,7 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <Dialog.Close className="absolute right-4 top-4 rounded-md p-1 text-stone-400 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+      <Dialog.Close className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors">
         <X className="size-4" />
         <span className="sr-only">Close</span>
       </Dialog.Close>
@@ -55,9 +55,15 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = "DialogContent";
 
-function DialogHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+function DialogHeader({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("flex flex-col gap-1.5 text-left", className)} {...props} />
+    <div
+      className={cn("flex flex-col gap-1.5 text-left", className)}
+      {...props}
+    />
   );
 }
 
@@ -67,7 +73,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Dialog.Title
     ref={ref}
-    className={cn("text-base font-semibold text-stone-800", className)}
+    className={cn("text-base font-semibold text-foreground", className)}
     {...props}
   />
 ));
@@ -79,7 +85,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Dialog.Description
     ref={ref}
-    className={cn("text-sm text-stone-500", className)}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ));
