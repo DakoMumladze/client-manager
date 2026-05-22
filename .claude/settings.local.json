@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(curl:*)",
+      "Bash(node --version:*)",
+      "Bash(tail:*)",
+      "Bash(find /root/workspace/client-manager/supabase -type f -name *.sql)",
+      "Bash(find /root/workspace/client-manager -path */migrations -o -path */supabase/migrations)",
+      "Bash(find /root/workspace/client-manager -path */actions/* -name *.ts)",
+      "Bash(find /root/workspace/client-manager/components -type f -name *.tsx -o -name *.ts)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(git show:*)",
+      "Bash(npm install:*)",
+      "Bash(ls /root/workspace/client-manager/node_modules/.pnpm/radix-ui*/node_modules/radix-ui/dist/)",
+      "Bash(pnpm run:*)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill *)",
+      "Bash(pnpm tsc *)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")"
+    ]
+  }
+}
