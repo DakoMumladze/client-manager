@@ -11,3 +11,18 @@ export type Client = {
   created_at: string;
   updated_at: string;
 };
+
+export type ProjectStatus = "in_progress" | "completed" | "on_hold";
+
+export type Project = {
+  id: string;
+  client_id: string;
+  user_id: string;
+  name: string;
+  description: string | null;
+  status: ProjectStatus;
+  deadline: string | null;
+  budget: number | null;
+  created_at: string;
+  updated_at: string;
+};
